@@ -1,0 +1,91 @@
+.container {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background-image: url("../assets/backgroud.jpg");
+  background-size: cover;
+  display: flex;
+}
+.wrapperInput {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.wrapper {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.bill {
+  width: 100%;
+  padding: 10px;
+  height: 45px;
+  margin: 10px 0;
+}
+img {
+  height: 45px;
+  width: 32%;
+}
+.captcha {
+  padding: 10px;
+  width: 33%;
+  height: 45px;
+  margin: 0 3px;
+}
+
+button {
+  height: 45px;
+  border: none;
+  width: 33%;
+  padding: 15px 20px;
+  background-color: #ff5f13;
+  color: white;
+  cursor: pointer;
+}
+.result {
+  background-color: #fff;
+  width: 50%;
+  height: 100%;
+  padding: 10px;
+}
+.animated {
+  background-repeat: no-repeat;
+  background-position: left top;
+  padding-top: 95px;
+  margin-bottom: 60px;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@-webkit-keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(20px);
+  }
+  100% {
+    opacity: 0.2;
+    -webkit-transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 0.75;
+    transform: translateX(0);
+  }
+}
+
+.fadeInRight {
+  -webkit-animation-name: fadeInRight;
+  animation-name: fadeInRight;
+}
