@@ -6,11 +6,12 @@ const Result = (props) => {
   const closeResult = () => {
     props.close(false);
   };
+  // SNP223754855
   useEffect(() => {
     const getData = async () => {
       try {
         const res = await axios.get(
-          "https://pos.pages.fm/api/v1/snappy/track?ids=SNP223754855"
+          `https://pos.pages.fm/api/v1/snappy/track?ids=${props.billNumber}`
         );
         setResult(res.data.trackings);
       } catch (error) {
@@ -20,24 +21,34 @@ const Result = (props) => {
     getData();
   }, []);
   return (
-    <div className="result animated fadeInRight ">
-      <div className="title">THÔNG TIN ĐƠN HÀNG</div>
-      <div className="content">
+    <div className="result animated fadeInRight rightbox">
+      <div className="result-header">
+        <div className="title">MÃ VẬN ĐƠN: {props.billNumber}</div>
+        <button onClick={closeResult} className="close">
+          x
+        </button>
+      </div>
+      <div className="rb-container">
         {result.length > 0 ? (
           <div>
-            <h3>{result[0].current_status}</h3>
-            <h3>{result[0].to.address}</h3>
-            <h3>{result[0].to.name}</h3>
-            {result[0].updates.map((item) => {
-              console.log(item);
-            })}
+            <span>Trạng thái: {result[0].current_status} - </span>
+            <span>Địa chỉ nhận: {result[0].to.address}</span>
+            <span> - Người nhận: {result[0].to.name}</span>
+            <ul className="rb">
+              {result[0].updates.map((item) => {
+                return (
+                  <li className="rb-item" ng-repeat="itembx">
+                    <div className="timestamp">{item.updated_at}</div>
+                    <div className="item-title">{item.status}</div>
+                    <div className="item-title">{item.note}</div>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         ) : (
           <h4>khong co thong tin don hang</h4>
         )}
-      </div>
-      <div className="footy">
-        <button onClick={closeResult}>OK em</button>
       </div>
     </div>
   );
